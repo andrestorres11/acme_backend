@@ -14,8 +14,11 @@ class CreateStatuTable extends Migration
     public function up()
     {
         Schema::create('statu', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->increments('statu_id');
+            $table->string('statu_name', 50);
+            $table->string('statu_encrypted', 350);
+            $table->dateTime('statu_creationDate')->nullable();
+            $table->dateTime('statu_lastModification')->nullable();
         });
     }
 

@@ -14,8 +14,13 @@ class CreateTokenTable extends Migration
     public function up()
     {
         Schema::create('token', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->increments('token_id');
+            $table->unsignedInteger('statu_id')->default('1');
+            $table->unsignedInteger('user_id');
+            $table->string('token_encrypted', 300);
+            $table->dateTime('token_creationDate')->nullable();
+            $table->dateTime('token_lastModification')->nullable();
+            $table->foreign('statu_id')->references('statu_id')->on('statu');
         });
     }
 
